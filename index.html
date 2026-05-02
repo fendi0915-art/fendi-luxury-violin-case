@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="zh">
 <head>
 <meta charset="UTF-8">
@@ -31,6 +32,7 @@ nav{
   font-size:12px;
   letter-spacing:2px;
   z-index:10;
+  flex-wrap:wrap;
 }
 
 nav a{
@@ -133,7 +135,67 @@ p{
   0%,100%{transform:translateY(0);}
   50%{transform:translateY(-10px);}
 }
+
+/* Gallery */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+  gap:16px;
+  max-width:960px;
+  width:100%;
+  margin-top:32px;
+}
+
+.gallery img{
+  width:100%;
+  aspect-ratio:3/4;
+  object-fit:cover;
+  display:block;
+  border:1px solid rgba(212,175,55,0.15);
+  transition:0.4s;
+  cursor:pointer;
+}
+
+.gallery img:hover{
+  border-color:#d4af37;
+  transform:scale(1.02);
+  box-shadow:0 8px 30px rgba(212,175,55,0.2);
+}
+
+/* Lightbox */
+#lightbox{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.92);
+  z-index:100;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+}
+
+#lightbox.active{
+  display:flex;
+}
+
+#lightbox img{
+  max-width:90vw;
+  max-height:85vh;
+  object-fit:contain;
+  border:1px solid rgba(212,175,55,0.3);
+}
+
+#lightbox-close{
+  position:absolute;
+  top:20px;
+  right:30px;
+  font-size:36px;
+  color:#d4af37;
+  cursor:pointer;
+  line-height:1;
+}
 </style>
+
 </head>
 
 <body>
@@ -159,35 +221,40 @@ p{
 </section>
 
 <!-- STORY -->
+
 <section id="story">
   <div class="fade">
     <h2 class="gold">STORY</h2>
 
-    <p>
-      Fendi 源自於對演奏者移動狀態的重新思考。  
-      在各大音樂廳之間奔波，琴盒不只是保護工具，而是承載音樂與身份的存在。
-    </p>
+```
+<p>
+  Fendi 源自於對演奏者移動狀態的重新思考。
+  在各大音樂廳之間奔波，琴盒不只是保護工具，而是承載音樂與身份的存在。
+</p>
 
-    <p>
-      傳統結構在長時間使用下容易產生車線鬆動與結構疲乏，  
-      因此我們選擇以手工拉皮工藝取代部分傳統拼接方式，  
-      讓結構更完整、張力更穩定，同時保留皮革最原始的生命力。
-    </p>
+<p>
+  傳統結構在長時間使用下容易產生車線鬆動與結構疲乏，
+  因此我們選擇以手工拉皮工藝取代部分傳統拼接方式，
+  讓結構更完整、張力更穩定，同時保留皮革最原始的生命力。
+</p>
 
-    <p>
-      每一只琴盒皆以天然頭層牛皮製作，搭配天然染劑上色，  
-      減少化學處理，親膚不刺激，並具備良好穩定性，不易染色。
-    </p>
+<p>
+  每一只琴盒皆以天然頭層牛皮製作，搭配天然染劑上色，
+  減少化學處理，親膚不刺激，並具備良好穩定性，不易染色。
+</p>
 
-    <p>
-      這不只是製作一只琴盒，  
-      而是將工藝、時間與演奏者的旅程，  
-      一同封存於皮革之中。
-    </p>
+<p>
+  這不只是製作一只琴盒，
+  而是將工藝、時間與演奏者的旅程，
+  一同封存於皮革之中。
+</p>
+```
+
   </div>
 </section>
 
 <!-- CRAFT -->
+
 <section id="craft">
   <div class="fade">
     <h2 class="gold">CRAFT</h2>
@@ -198,14 +265,15 @@ p{
 </section>
 
 <!-- DETAILS -->
+
 <section id="details">
   <div class="fade">
     <h2 class="gold">DETAILS</h2>
     <p>
-      · Top grain leather  
-      · Natural dye finish  
-      · Full metal hardware  
-      · Handmade construction  
+      · Top grain leather
+      · Natural dye finish
+      · Full metal hardware
+      · Handmade construction
       · One cow → one case
     </p>
     <p>
@@ -215,6 +283,7 @@ p{
 </section>
 
 <!-- HANDMADE -->
+
 <section id="handmade">
   <div class="fade">
     <h2 class="gold">PURE HANDMADE</h2>
@@ -225,6 +294,7 @@ p{
 </section>
 
 <!-- ORANGE -->
+
 <section id="orange" class="bg-orange">
   <div class="fade">
     <h2 class="orange">ARTISTIC ORANGE</h2>
@@ -234,10 +304,16 @@ p{
       <b class="orange">$42,000</b><br>
       <a class="btn" href="https://line.me/ti/p/fendi-chang">ORDER</a>
     </div>
+    <div class="gallery">
+      <img src="images/IMG_0370.jpeg" alt="Artistic Orange – front view" onclick="openLightbox(this.src)">
+      <img src="images/IMG_0372.jpeg" alt="Artistic Orange – back view" onclick="openLightbox(this.src)">
+      <img src="images/IMG_0390.jpeg" alt="Artistic Orange – open case with violin" onclick="openLightbox(this.src)">
+    </div>
   </div>
 </section>
 
 <!-- GREY -->
+
 <section id="grey" class="bg-grey">
   <div class="fade">
     <h2 class="grey">PROFESSIONAL GREY</h2>
@@ -247,10 +323,15 @@ p{
       <b class="grey">$42,000</b><br>
       <a class="btn" href="https://line.me/ti/p/fendi-chang">ORDER</a>
     </div>
+    <div class="gallery">
+      <img src="images/IMG_8643.jpeg" alt="Professional Grey – front view" onclick="openLightbox(this.src)">
+      <img src="images/IMG_0006.jpeg" alt="Professional Grey – open case with violin" onclick="openLightbox(this.src)">
+    </div>
   </div>
 </section>
 
 <!-- GOLD -->
+
 <section id="gold" class="bg-gold">
   <div class="fade">
     <h2 class="gold">LUXURY GOLD</h2>
@@ -260,10 +341,18 @@ p{
       <b class="gold">$42,000</b><br>
       <a class="btn" href="https://line.me/ti/p/fendi-chang">ORDER</a>
     </div>
+    <div class="gallery">
+      <img src="images/IMG_7534.jpeg" alt="Luxury Gold – front view" onclick="openLightbox(this.src)">
+      <img src="images/IMG_7537.jpeg" alt="Luxury Gold – side view" onclick="openLightbox(this.src)">
+      <img src="images/IMG_7538.jpeg" alt="Luxury Gold – latch detail" onclick="openLightbox(this.src)">
+      <img src="images/IMG_7547.jpeg" alt="Luxury Gold – strap detail" onclick="openLightbox(this.src)">
+      <img src="images/IMG_7545.jpeg" alt="Luxury Gold – open case interior" onclick="openLightbox(this.src)">
+    </div>
   </div>
 </section>
 
 <!-- CUSTOM -->
+
 <section id="custom">
   <div class="fade">
     <h2 class="gold">CUSTOM COLOR｜私人高訂系列</h2>
@@ -273,24 +362,35 @@ p{
 </section>
 
 <!-- ORDER -->
+
 <section id="order">
   <div class="fade">
     <h2 class="gold">ORDER</h2>
     <p>IG追蹤＋按讚＋留言「Fendi」可獲9折折扣碼</p>
 
-    <a class="btn" href="https://line.me/ti/p/fendi-chang">LINE: fendi-chang</a>
+```
+<a class="btn" href="https://line.me/ti/p/fendi-chang">LINE: fendi-chang</a>
 
-    <p style="margin-top:30px;font-size:13px;color:#999;line-height:2;">
-      CONNECT<br><br>
-      FB: 張絲媛<br>
-      LINE: fendi-chang<br>
-      IG: ssuyuan_chang_fendi<br>
-      THREADS: ssuyuan_chang_fendi<br><br>
-      CONTACT FOR PURCHASE & CUSTOM REQUEST<br>
-      FOR CUSTOM COLOR / PERSONALIZED DESIGN AVAILABLE
-    </p>
+<p style="margin-top:30px;font-size:13px;color:#999;line-height:2;">
+  CONNECT<br><br>
+  FB: 張絲媛<br>
+  LINE: fendi-chang<br>
+  IG: ssuyuan_chang_fendi<br>
+  THREADS: ssuyuan_chang_fendi<br><br>
+  CONTACT FOR PURCHASE & CUSTOM REQUEST<br>
+  FOR CUSTOM COLOR / PERSONALIZED DESIGN AVAILABLE
+</p>
+```
+
   </div>
 </section>
+
+<!-- Lightbox -->
+
+<div id="lightbox" onclick="closeLightbox()">
+  <span id="lightbox-close" onclick="closeLightbox()">×</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
 
 <script>
 const items=document.querySelectorAll('.fade');
@@ -304,6 +404,14 @@ function reveal(){
 }
 window.addEventListener('scroll',reveal);
 window.addEventListener('load',reveal);
+
+function openLightbox(src){
+  document.getElementById('lightbox-img').src=src;
+  document.getElementById('lightbox').classList.add('active');
+}
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('active');
+}
 </script>
 
 </body>
